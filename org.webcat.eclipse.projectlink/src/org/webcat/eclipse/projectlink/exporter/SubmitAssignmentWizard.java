@@ -213,7 +213,18 @@ public class SubmitAssignmentWizard extends Wizard implements IExportWizard
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			String errorMsg = "Unable to open the submission response in your browser.\n" +
+            "To fix this issue:\n" +
+            "1. Go to Eclipse Preferences/Settings\n" +
+            "2. Navigate to General → Web Browser\n" +
+            "3. Select 'Use external web browser'\n" +
+            "4. Choose Chrome from the list (or add Chrome if not available)\n" +
+            "5. Click Apply and OK\n" +
+			"6. Resubmit the assignment.";
+
+			MessageDialog.openWarning(getContainer().getShell(), "Browser Opening Failed", errorMsg);
+
+			e.printStackTrace(); 
 		}
 	}
 
